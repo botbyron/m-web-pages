@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料索引 · 乐鱼体育</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f0f2f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #1f2a3a;
+      line-height: 1.65;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* Hero 区 — 短开场，留白呼吸 */
+    .hero {
+      text-align: left;
+      margin-bottom: 3rem;
+      padding: 0.2rem 0;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0b1a2b;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero .tagline {
+      font-size: 1rem;
+      color: #546778;
+      border-left: 3px solid #4b7a9c;
+      padding-left: 1rem;
+      max-width: 80%;
+    }
+
+    /* 卡片通用设计 — 浅灰背景、细边框、柔和阴影 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #dfe4ea;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.02);
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.15s ease;
+    }
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    /* 承接段落 */
+    .intro p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 特点列表 —— 紧凑、信息密度高 */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .features-grid .item {
+      padding: 0.2rem 0;
+      border-left: 2px solid #d6dee7;
+      padding-left: 0.9rem;
+    }
+    .features-grid .item strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1c2e42;
+      margin-bottom: 0.2rem;
+    }
+    .features-grid .item span {
+      font-size: 0.9rem;
+      color: #4a5b6e;
+      line-height: 1.5;
+    }
+
+    /* 场景卡片 — 温和叙述 */
+    .scenario {
+      background: #ffffff;
+    }
+    .scenario h3 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #1e334a;
+      margin-bottom: 0.75rem;
+    }
+    .scenario p {
+      font-size: 0.95rem;
+      color: #3f5267;
+    }
+
+    /* FAQ 摘要 (简洁) */
+    .faq-item {
+      border-bottom: 1px solid #eaeef3;
+      padding: 0.9rem 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-item .q {
+      font-weight: 500;
+      color: #1f3348;
+      margin-bottom: 0.2rem;
+    }
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #52657a;
+    }
+
+    /* 温和结尾 */
+    .footer-note {
+      text-align: left;
+      margin-top: 1.5rem;
+      padding: 1.2rem 0 0.5rem;
+      border-top: 1px solid #dce2ea;
+      font-size: 0.9rem;
+      color: #5f7289;
+    }
+    .footer-note a {
+      color: #1e4d6b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #b0c4d4;
+    }
+    .footer-note a:hover {
+      border-bottom: 1px solid #1e4d6b;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body { padding: 1.2rem 0.8rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero .tagline { max-width: 100%; }
+      .card { padding: 1.4rem 1.2rem; }
+      .features-grid { grid-template-columns: 1fr; gap: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 开场短句 -->
+  <div class="hero">
+    <h1>信息整理·乐鱼体育</h1>
+    <div class="tagline">从资料编排与索引视角，构建更条理的浏览起点。</div>
+  </div>
+
+  <!-- 承接段落：展开资料整理意图 -->
+  <div class="card intro">
+    <p>日常面对大量体育内容流时，筛选与回溯往往比获取本身更消耗精力。这一页尝试以资料卡片为基本单元，将散落的信息节点重新编排——让结构服务于查阅，而非装饰。以下内容来自对 <a href="https://m-web-leyusports.com.cn" style="color:#1f5680; text-decoration:none; border-bottom:1px dotted #b0cce0;">乐鱼体育</a> 频道架构的观察与归纳，聚焦模式、分类与常见访问路径。</p>
+    <p>我们不生产实时数据，而是为已经存在的信息提供一层索引框架。无论你是首次接触还是定期回访，都可以把这里当作一个安静的参考锚点。</p>
+  </div>
+
+  <!-- 特点列表（四项） -->
+  <div class="card">
+    <h2 style="font-weight:500; font-size:1.2rem; margin-bottom:1rem; color:#1d3148;">索引特点</h2>
+    <div class="features-grid">
+      <div class="item">
+        <strong>模块化分类</strong>
+        <span>按赛事类型、资讯时段、专题板块划分，减少重复检索。</span>
+      </div>
+      <div class="item">
+        <strong>轻量标记</strong>
+        <span>每个卡片附带简要标签，便于快速定位内容属性。</span>
+      </div>
+      <div class="item">
+        <strong>层级平铺</strong>
+        <span>避免深层菜单，将主要信息入口控制在两次点击以内。</span>
+      </div>
+      <div class="item">
+        <strong>版本回溯</strong>
+        <span>保留近期结构快照，辅助对比内容组织变化。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 场景卡片：实际使用情境 -->
+  <div class="card scenario">
+    <h3>使用情境举例</h3>
+    <p>当需要回顾某赛事的资讯脉络，或对比不同板块的更新节奏时，可以直接利用左侧分类索引进入对应集束。对于首次使用 <a href="https://m-web-leyusports.com.cn" style="color:#1f5680; text-decoration:none; border-bottom:1px dotted #b0cce0;">乐鱼体育</a> 的用户，按「赛事」「专题」「数据摘要」划分的卡片组能提供清晰的浏览预期。</p>
+    <p style="margin-top:0.6rem;">所有链接均指向原始内容源，索引页本身不改变信息流向，只做聚合与陈列。</p>
+  </div>
+
+  <!-- FAQ 摘要 (而非完整问答) -->
+  <div class="card">
+    <h3 style="font-weight:500; font-size:1.1rem; margin-bottom:0.8rem; color:#1d3148;">常见资料定位</h3>
+    <div class="faq-item">
+      <div class="q">如何快速找到某一联赛的历史页面？</div>
+      <div class="a">在索引卡片组中按「赛事归档」标签筛选，或直接使用站内检索栏输入联赛名称。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">信息卡片的更新频率是怎样的？</div>
+      <div class="a">索引结构随主站内容调整而刷新，卡片内容本身保持静态，仅反映可访问的入口。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">是否可以反馈分类建议？</div>
+      <div class="a">目前以单向索引为主，分类逻辑基于页面现有结构，暂不开放自定义排序。</div>
+    </div>
+  </div>
+
+  <!-- 温和结尾 + 嵌入链接 -->
+  <div class="footer-note">
+    <p>本页作为资料整理辅助页，不替代 <a href="https://m-web-leyusports.com.cn">乐鱼体育</a> 原站内容。索引条目仅供浏览参考，具体信息请以实际页面为准。保持简洁，持续迭代。</p>
+  </div>
+
+</div>
+</body>
+</html>
