@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜂鸟竞技 · 信息索引平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background-color: #f6f7fb;
+            color: #1e232b;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: #0f141b;
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            color: #eaeef2;
+            border-bottom: 1px solid #2c3340;
+        }
+
+        .hero .inset {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #9ba9b8;
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #bcc9d6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 350;
+        }
+
+        /* 浅色正文区 */
+        .main-content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .intro-block {
+            margin-bottom: 3rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .accent-link {
+            color: #1d6f9c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .accent-link:hover {
+            border-bottom-color: #1d6f9c;
+            color: #0b4a6f;
+        }
+
+        /* 特点列表 – 卡片式 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.03);
+            transition: box-shadow 0.25s, transform 0.2s;
+            border: 1px solid #e9ecf2;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+
+        .feature-card .emoji-marker {
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            line-height: 1;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3b4552;
+            line-height: 1.5;
+        }
+
+        /* 温和结尾 + 引用区 */
+        .closing {
+            margin: 3.5rem 0 2rem;
+            padding: 2rem 0 0.5rem;
+            border-top: 1px solid #dde2e9;
+        }
+
+        .closing p {
+            font-size: 1rem;
+            color: #2d3844;
+            margin-bottom: 0.8rem;
+        }
+
+        .closing .cite-note {
+            font-size: 0.9rem;
+            color: #5e6a79;
+            border-left: 3px solid #b2c0ce;
+            padding-left: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .faq-mini {
+            margin: 2.5rem 0 1rem;
+        }
+
+        .faq-mini details {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 0.8rem 1.2rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #e3e7ee;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1e293b;
+            padding: 0.2rem 0;
+        }
+
+        .faq-mini details p {
+            margin-top: 0.6rem;
+            font-size: 0.95rem;
+            color: #364150;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #6b7787;
+            text-align: center;
+            border-top: 1px solid #e2e6ed;
+            padding-top: 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .main-content {
+                padding: 2rem 1rem 3rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero {
+                padding: 6rem 2rem 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="inset">
+        <div class="tagline">· 信息索引 · 赛事资料 ·</div>
+        <h1>数据归档，不止于赛果</h1>
+        <p class="sub">从赛事记录到选手档案，简洁而系统的整理方式。</p>
+    </div>
+</header>
+
+<main class="main-content">
+
+    <!-- 开场短句 + 承接段落 -->
+    <div class="intro-block">
+        <p>信息检索的效率往往取决于结构。大量的赛事数据、赛程变更与选手动态散落在不同区域，而一份经过梳理的索引能够缩短查找路径。<a href="https://main-fengniao.com" class="accent-link">蜂鸟竞技</a> 正是围绕这一思路建设的资料整合平台：以赛事为核心节点，将相关信息汇集为可直接引用的条目。</p>
+        <p>过去几个月里，我们逐步补充了多个项目的历届成绩、赛季时间线、参赛队伍基础信息等模块。不同于实时比分或即时赔率，这里的侧重点在于“可追溯”——无论是查阅上赛季的淘汰赛对阵，还是对比不同年份的阵容变动，都依赖一套稳定的字段结构。</p>
+        <p>以下是从信息整理角度提炼的几个特点，也反映了平台当前的主要索引逻辑。</p>
+    </div>
+
+    <!-- 特点列表 -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <span class="emoji-marker">📋</span>
+            <h3>结构化条目</h3>
+            <p>每项赛事独立归档，包含参赛方、赛段日期、排名与关键事件。字段统一，方便批量检索或交叉引用。</p>
+        </div>
+        <div class="feature-card">
+            <span class="emoji-marker">🔗</span>
+            <h3>交叉关联</h3>
+            <p>选手、队伍、赛事三者之间建立可跳转的关联，减少重复查找。同一选手在不同赛季的记录可连续查看。</p>
+        </div>
+        <div class="feature-card">
+            <span class="emoji-marker">📅</span>
+            <h3>赛季时间轴</h3>
+            <p>按时间线排列的赛程概览，标注阶段更替与主要节点。适用于回顾赛历或快速定位特定轮次。</p>
+        </div>
+        <div class="feature-card">
+            <span class="emoji-marker">🧩</span>
+            <h3>低重复度内容</h3>
+            <p>避免冗余列表与重复堆叠，每一条目都经过筛选与核对。信息源以官方公告及公开统计数据为准。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（轻量） -->
+    <div class="faq-mini">
+        <details>
+            <summary>平台主要覆盖哪些项目？</summary>
+            <p>目前以主流团队项目为主，包括部分联赛、杯赛及邀请赛记录。项目范围会依据数据完整度逐步扩展，优先补充赛历稳定的赛事。</p>
+        </details>
+        <details>
+            <summary>数据更新频率如何？</summary>
+            <p>非实时更新。赛后 24–72 小时内补充基础赛果与对阵信息，赛季结束后统一完善深度统计数据。适合查阅而非即时播报。</p>
+        </details>
+        <details>
+            <summary>能否直接用于数据导出？</summary>
+            <p>页面内容以结构化文本呈现，可通过复制或标准浏览器操作提取。暂未开放批量 API，但条目格式规整，便于手动整理。</p>
+        </details>
+    </div>
+
+    <!-- 温和结尾 + 引用感 -->
+    <div class="closing">
+        <p>信息的价值在于被需要时能够被找到。<a href="https://main-fengniao.com" class="accent-link">蜂鸟竞技</a> 尝试用更克制的目录感来承载赛事资料，让每一次查询都基于清晰的分层。如果某些条目恰好填补了你记忆中的空白，那便是这份索引最自然的用途。</p>
+        <div class="cite-note">
+            “整理不是终点，而是下一次回顾的起点。”
+        </div>
+    </div>
+
+    <div class="footer-note">
+        © 蜂鸟竞技 · 资料索引页
+    </div>
+</main>
+
+</body>
+</html>
