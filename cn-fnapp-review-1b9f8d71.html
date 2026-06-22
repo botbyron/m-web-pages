@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>蜂鸟竞技 · 敏捷而稳定的赛事数据平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f7f9;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1f2e3c;
+      line-height: 1.6;
+      padding: 0 16px 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* 杂志封面式横幅 */
+    .hero {
+      margin: 32px 0 28px;
+      padding: 48px 24px 40px;
+      background: linear-gradient(145deg, #0f4c5c 0%, #1b6f7a 70%, #28888f 100%);
+      border-radius: 40px 16px 40px 16px;
+      box-shadow: 0 12px 32px rgba(11, 62, 72, 0.25);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -30%;
+      width: 160%;
+      height: 200%;
+      background: radial-gradient(circle at 20% 30%, rgba(100, 200, 190, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #e8f6f3;
+      text-shadow: 0 2px 6px rgba(0, 20, 20, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero p {
+      margin-top: 14px;
+      font-size: 1.2rem;
+      font-weight: 350;
+      color: #d0ede8;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+    }
+
+    .hero small {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 6px 18px;
+      border-radius: 40px;
+      color: #e0f7f0;
+      backdrop-filter: blur(2px);
+    }
+
+    /* 背景说明——杂志式引文块 */
+    .intro-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 30px 0 28px;
+    }
+
+    .intro-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 20px rgba(0, 40, 45, 0.06);
+      flex: 1 1 260px;
+      border: 1px solid rgba(140, 190, 185, 0.2);
+      transition: transform 0.15s ease;
+    }
+
+    .intro-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(12, 70, 78, 0.08);
+    }
+
+    .intro-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0b5b63;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .intro-card h3::before {
+      content: '▴';
+      display: inline-block;
+      color: #217a82;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .intro-card p {
+      font-size: 0.98rem;
+      color: #2b404a;
+      margin-bottom: 4px;
+    }
+
+    .intro-card .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: #d9ede8;
+      color: #0c4f57;
+      padding: 2px 12px;
+      border-radius: 30px;
+      margin-top: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    /* 网格卡片区——特点/场景混排 */
+    .grid-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin: 28px 0 22px;
+    }
+
+    .grid-item {
+      background: #f9feff;
+      border-radius: 24px;
+      padding: 22px 18px;
+      border: 1px solid #cde3e0;
+      box-shadow: 0 2px 8px rgba(0, 50, 55, 0.04);
+      transition: all 0.15s ease;
+    }
+
+    .grid-item:nth-child(odd) {
+      background: #ffffff;
+    }
+
+    .grid-item h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #115c65;
+      margin-bottom: 6px;
+    }
+
+    .grid-item p {
+      font-size: 0.92rem;
+      color: #304a54;
+      line-height: 1.5;
+    }
+
+    .grid-item .num {
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: #3b8d8f;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .faq-mini {
+      background: #e5f2ef;
+      border-radius: 28px;
+      padding: 24px 24px 16px;
+      margin: 20px 0 32px;
+      border-left: 4px solid #2d828b;
+    }
+
+    .faq-mini h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0b4c55;
+      margin-bottom: 12px;
+    }
+
+    .faq-mini details {
+      margin-bottom: 8px;
+      border-bottom: 1px dashed #a4c9c3;
+      padding-bottom: 6px;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      cursor: pointer;
+      color: #164f59;
+      padding: 6px 0;
+      font-size: 0.95rem;
+    }
+
+    .faq-mini summary::marker {
+      color: #307d83;
+    }
+
+    .faq-mini p {
+      color: #253b42;
+      padding: 6px 0 6px 12px;
+      font-size: 0.91rem;
+    }
+
+    /* 页尾访问提示 — 自然嵌入链接 */
+    .footer-note {
+      background: #ffffff;
+      border-radius: 40px 12px 40px 12px;
+      padding: 28px 24px;
+      margin: 12px 0 30px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 30, 35, 0.04);
+      border: 1px solid #d5e5e2;
+    }
+
+    .footer-note p {
+      font-size: 1.02rem;
+      color: #203a42;
+      max-width: 520px;
+      margin: 0 auto 8px;
+    }
+
+    .footer-note .link-sentence {
+      background: #e5f1ef;
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 60px;
+      margin-top: 8px;
+    }
+
+    .footer-note a {
+      color: #0b6672;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid #5f9d9f;
+      transition: border-color 0.2s;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #0c3e46;
+      color: #07444e;
+    }
+
+    .dot-divider {
+      color: #8db6b0;
+      margin: 0 8px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #cde0dc;
+      margin: 10px 0 18px;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0 12px 36px;
+      }
+      .hero {
+        padding: 36px 18px 32px;
+        margin: 20px 0 24px;
+        border-radius: 28px 12px 28px 12px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .intro-block {
+        gap: 14px;
+      }
+      .grid-panel {
+        gap: 12px;
+      }
+      .footer-note {
+        padding: 20px 16px;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .intro-card:nth-child(2) {
+        margin-top: 8px;
+      }
+    }
+
+    /* 小点缀 */
+    .teal-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #398e92;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO 横幅 -->
+  <div class="hero">
+    <h1>蜂鸟竞技</h1>
+    <p>轻快、可靠、面向开发者的赛事数据接口</p>
+    <small>数据 · 稳定 · 低延迟</small>
+  </div>
+
+  <!-- 背景说明 + 三段式自然介绍 -->
+  <div class="intro-block">
+    <div class="intro-card">
+      <h3>站点源起</h3>
+      <p>一个以实时性与结构化数据为核心的赛事服务平台，从最初的小众工具逐步演化为被多位开发者引用的数据层。主要服务于需要竞技赛程、比分、统计信息的应用场景。</p>
+      <span class="tag">连续性数据</span>
+    </div>
+    <div class="intro-card">
+      <h3>可信逻辑</h3>
+      <p>数据采集与整合流程遵循可回溯原则，每次更新保留版本标记。平台不生成原始数据，而是作为聚合与分发节点，为下游提供统一格式的 JSON / XML 响应。</p>
+      <span class="tag">校验层</span>
+    </div>
+    <div class="intro-card">
+      <h3>适用边界</h3>
+      <p>适合个人开发者、播报类工具、数据看板、赛事专题等非极端高频场景。接口返回稳定，日常维护有日志公示，社区反馈响应周期约在数小时内。</p>
+      <span class="tag">社区维护</span>
+    </div>
+  </div>
+
+  <!-- 网格卡片：特点 + 场景 (混合布局) -->
+  <div class="grid-panel">
+    <div class="grid-item">
+      <span class="num">01</span>
+      <h4>结构化字段</h4>
+      <p>比赛状态、球队、时间、比分均以固定字段输出，减少解析歧义。</p>
+    </div>
+    <div class="grid-item">
+      <span class="num">02</span>
+      <h4>多赛事覆盖</h4>
+      <p>足球、篮球、电竞等主流联赛均有收录，按地区归类。</p>
+    </div>
+    <div class="grid-item">
+      <span class="num">03</span>
+      <h4>请求缓存</h4>
+      <p>相同查询短时间内走缓存，降低重复请求开销。</p>
+    </div>
+    <div class="grid-item">
+      <span class="num">04</span>
+      <h4>快照归档</h4>
+      <p>每日零点生成全量快照，可供离线分析或回放。</p>
+    </div>
+    <div class="grid-item">
+      <span class="num">05</span>
+      <h4>文档示例</h4>
+      <p>接口文档包含 curl、Python、JavaScript 示例，降低上手门槛。</p>
+    </div>
+    <div class="grid-item">
+      <span class="num">06</span>
+      <h4>状态面板</h4>
+      <p>公开状态页显示各接口健康度与延迟，透明运营。</p>
+    </div>
+  </div>
+
+  <!-- FAQ摘要 / 常见疑问 杂志式短块 -->
+  <div class="faq-mini">
+    <h4>❓ 常见疑问摘要</h4>
+    <details>
+      <summary>数据更新频率是多少？</summary>
+      <p>比赛进行阶段每 30–60 秒刷新一次，赛前/赛后阶段更新间隔适当延长。</p>
+    </details>
+    <details>
+      <summary>是否需要申请密钥？</summary>
+      <p>大部分基础接口可直接调用，部分扩展接口建议登记用途以获取稳定配额。</p>
+    </details>
+    <details>
+      <summary>是否提供历史赛季数据？</summary>
+      <p>近三个完整赛季的数据保留在在线库中，更早数据可联系归档查询。</p>
+    </details>
+    <hr>
+    <p style="font-size:0.88rem; color:#3c5c63;">更多细则请参阅平台说明文档。</p>
+  </div>
+
+  <!-- 页尾访问提示 — 自然嵌入 a 标签，可见文本为「蜂鸟竞技」 -->
+  <div class="footer-note">
+    <p>如果你正在寻找一个结构清晰、延迟可控的赛事数据聚合点，可以了解 <a href="https://cn-fnapp.com">蜂鸟竞技</a> 的接口规范和社区文档。</p>
+    <div class="link-sentence">
+      <span class="teal-dot"></span> 持续维护 · 接口示例已更新
+    </div>
+    <p style="margin-top:12px; font-size:0.85rem; color:#4d6e74;">本站不提供博彩或违规内容，仅面向开发者与信息聚合需求。</p>
+  </div>
+
+  <!-- 极简版权装饰（非必要但自然） -->
+  <div style="text-align:center; font-size:0.75rem; color:#78928b; margin-top:16px; letter-spacing:0.02em;">
+    <span>索引周期 · 2025</span>
+    <span class="dot-divider">⸻</span>
+    <span>数据聚合节点</span>
+  </div>
+
+</div>
+</body>
+</html>
